@@ -1,6 +1,6 @@
 package com.artemissoftware.stormyweather.domain.repositories
 
-import com.artemissoftware.stormyweather.domain.models.WeatherInfo
+import com.artemissoftware.stormyweather.domain.models.weather.WeatherInfo
 import com.artemissoftware.stormyweather.domain.util.Resource
 
 interface WeatherRepository {

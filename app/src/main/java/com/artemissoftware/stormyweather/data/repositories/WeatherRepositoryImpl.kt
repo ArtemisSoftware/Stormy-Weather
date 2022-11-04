@@ -1,8 +1,8 @@
-package com.artemissoftware.stormyweather.repositories
+package com.artemissoftware.stormyweather.data.repositories
 
 import com.artemissoftware.stormyweather.data.mappers.toWeatherInfo
 import com.artemissoftware.stormyweather.data.remote.WeatherApi
-import com.artemissoftware.stormyweather.domain.models.WeatherInfo
+import com.artemissoftware.stormyweather.domain.models.weather.WeatherInfo
 import com.artemissoftware.stormyweather.domain.repositories.WeatherRepository
 import com.artemissoftware.stormyweather.domain.util.Resource
 import javax.inject.Inject

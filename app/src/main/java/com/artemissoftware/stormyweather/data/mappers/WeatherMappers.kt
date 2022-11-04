@@ -2,8 +2,8 @@ package com.artemissoftware.stormyweather.data.mappers
 
 import com.artemissoftware.stormyweather.data.remote.models.WeatherDataDto
 import com.artemissoftware.stormyweather.data.remote.models.WeatherDto
-import com.artemissoftware.stormyweather.domain.models.WeatherData
-import com.artemissoftware.stormyweather.domain.models.WeatherInfo
+import com.artemissoftware.stormyweather.domain.models.weather.WeatherData
+import com.artemissoftware.stormyweather.domain.models.weather.WeatherInfo
 import com.artemissoftware.stormyweather.domain.types.WeatherType
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter

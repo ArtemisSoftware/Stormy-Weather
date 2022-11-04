@@ -1,4 +1,4 @@
-package com.artemissoftware.stormyweather.domain.models
+package com.artemissoftware.stormyweather.domain.models.weather
 
 import com.artemissoftware.stormyweather.domain.types.WeatherType
 import java.time.LocalDateTime
