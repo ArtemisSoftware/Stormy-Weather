@@ -72,5 +72,8 @@ dependencies {
     implementation "com.google.dagger:hilt-android:$hilt_version"
     kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
     kapt "androidx.hilt:hilt-compiler:$hilt_compiler"
-    implementation "androidx.hilt:hilt-navigation-compose:hilt_navigation_version"
+    implementation "androidx.hilt:hilt-navigation-compose:$hilt_navigation_version"
+
+    // Location Services
+    implementation "com.google.android.gms:play-services-location:$play_services_location_version"
 }
