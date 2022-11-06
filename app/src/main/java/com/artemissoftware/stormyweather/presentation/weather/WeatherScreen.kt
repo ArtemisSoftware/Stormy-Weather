@@ -27,20 +27,27 @@ import com.artemissoftware.stormyweather.ui.theme.DeepBlue
 @Composable
 fun WeatherScreen(viewModel: WeatherViewModel = hiltViewModel()) {
 
-    val ggg = remember {
+    val permissionGranted = remember {
         mutableStateOf(false)
     }
 
-        LaunchedEffect(key1 = true){
-            if(ggg.value) {
+//    LaunchedEffect(key1 = true){
+//        if(permissionGranted.value) {
+//            viewModel.loadWeatherInfo()
+//        }
+//    }
+
+
+    CheckLocationPermissions(
+        onPermissionGranted =  {
+           // permissionGranted.value = true
+            if(it) {
                 viewModel.loadWeatherInfo()
             }
-        }
+            permissionGranted.value = it
+        },
 
-
-    MyScreenContent(onClick =  {
-        ggg.value = true
-    }
+        permissionGranted = permissionGranted.value
     )
 
     Box(
@@ -76,7 +83,10 @@ fun WeatherScreen(viewModel: WeatherViewModel = hiltViewModel()) {
 }
 
 @Composable
-fun MyScreenContent(onClick: () -> Unit) {
+fun CheckLocationPermissions(
+    onPermissionGranted: (Boolean) -> Unit,
+    permissionGranted: Boolean
+) {
 
     val context = LocalContext.current
 
@@ -90,25 +100,29 @@ fun MyScreenContent(onClick: () -> Unit) {
         val areGranted = permissionsMap.values.reduce { acc, next -> acc && next }
         if (areGranted) {
             // Use location
-            onClick.invoke()
+            onPermissionGranted.invoke(true)
         } else {
+            onPermissionGranted.invoke(true)
             // Show dialog
         }
     }
-    checkAndRequestLocationPermissions(
-        context,
-        permissions,
-        launcherMultiplePermissions,
-        onClick = onClick
-    )
+
+    if(!permissionGranted) {
+        CheckAndRequestLocationPermissions(
+            context,
+            permissions,
+            launcherMultiplePermissions,
+            onPermissionGranted = onPermissionGranted
+        )
+    }
 }
 
 @Composable
-fun checkAndRequestLocationPermissions(
+fun CheckAndRequestLocationPermissions(
     context: Context,
     permissions: Array<String>,
     launcher: ManagedActivityResultLauncher<Array<String>, Map<String, Boolean>>,
-    onClick: () -> Unit
+    onPermissionGranted: (Boolean) -> Unit
 ) {
     if (
         permissions.all {
@@ -118,7 +132,7 @@ fun checkAndRequestLocationPermissions(
             ) == PackageManager.PERMISSION_GRANTED
         }
     ) {
-        onClick.invoke()
+        onPermissionGranted.invoke(true)
         // Use location because permissions are already granted
     } else {
         // Request permissions

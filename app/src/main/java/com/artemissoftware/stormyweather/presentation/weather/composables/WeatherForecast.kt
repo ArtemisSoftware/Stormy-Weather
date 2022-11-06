@@ -29,7 +29,12 @@ fun WeatherForecast(
             )
             Spacer(modifier = Modifier.height(16.dp))
             LazyRow(content = {
-                items(data) { weatherData ->
+                items(
+                    items = data,
+                    key = { message ->
+                        message.time
+                    }
+                ) { weatherData ->
                     HourlyWeatherDisplay(
                         weatherData = weatherData,
                         modifier = Modifier
