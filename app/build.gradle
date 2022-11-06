@@ -7,7 +7,7 @@ plugins {
 
 android {
     namespace 'com.artemissoftware.stormyweather'
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.artemissoftware.stormyweather"
