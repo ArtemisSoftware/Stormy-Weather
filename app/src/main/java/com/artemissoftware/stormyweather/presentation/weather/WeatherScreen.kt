@@ -102,7 +102,7 @@ fun CheckLocationPermissions(
             // Use location
             onPermissionGranted.invoke(true)
         } else {
-            onPermissionGranted.invoke(true)
+            onPermissionGranted.invoke(true) // I dont like this too, but on tutorial it suggested view model will deal with it.
             // Show dialog
         }
     }
